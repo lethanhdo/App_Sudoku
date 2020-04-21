@@ -37,7 +37,7 @@ function hide_easy() {
 
 	for (var j = 0; j < p.length; j++) {
 		const num = (Math.random() );
-		if (num <0.4) {
+		if (num <0.1) {
 			p[j].style.display = 'none';
 			origine = p[j].innerHTML;
 			var x1 = document.createElement('INPUT');
@@ -95,7 +95,6 @@ function hide_difficult() {
 // Check the input value
 
 function load(){
-	const allInput = document.querySelectorAll('INPUT');
 	function check() {
 		var inputArray = Array.prototype.slice.call(allInput);
 		const checkAll = inputArray.filter(item => {
@@ -107,6 +106,8 @@ function load(){
 			return false;
 		}
 	}
+
+	const allInput = document.querySelectorAll('INPUT');
 	allInput.forEach((e, i) => {
 		e.oninput = event => {
 			if (event.target.value === e.className) {
