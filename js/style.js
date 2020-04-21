@@ -96,6 +96,17 @@ function hide_difficult() {
 
 function load(){
 	const allInput = document.querySelectorAll('INPUT');
+	function check() {
+		var inputArray = Array.prototype.slice.call(allInput);
+		const checkAll = inputArray.filter(item => {
+			return item.style.color === 'forestgreen';
+		});
+		if (checkAll.length === inputArray.length) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 	allInput.forEach((e, i) => {
 		e.oninput = event => {
 			if (event.target.value === e.className) {
@@ -103,18 +114,8 @@ function load(){
 			} else {
 				e.style.color = 'firebrick';
 			}
-	
-			const result = function check() {
-				var inputArray = Array.prototype.slice.call(allInput);
-				const checkAll = inputArray.filter(item => {
-					return item.style.color === 'forestgreen';
-				});
-				if (checkAll.length === inputArray.length) {
-					return true;
-				} else {
-					return false;
-				}
-			}
+			const result = check();
+			
 			if (result) {
 				document.getElementById('title').innerHTML = 'Chúc mừng, bạn đã chiến thắng !!';
 				stop();
