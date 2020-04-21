@@ -37,7 +37,7 @@ function hide_easy() {
 
 	for (var j = 0; j < p.length; j++) {
 		const num = (Math.random() );
-		if (num <0.5) {
+		if (num <0.4) {
 			p[j].style.display = 'none';
 			origine = p[j].innerHTML;
 			var x1 = document.createElement('INPUT');
@@ -51,7 +51,6 @@ function hide_easy() {
 		}
 	}
 }
-//hide_easy();
 function hide_medium() {
 	var origine = '',
 		p = document.getElementsByTagName('p');
@@ -92,33 +91,46 @@ function hide_difficult() {
 		}
 	}
 }
-function hide_all() {
-	var origine = '',
-		p = document.getElementsByTagName('p');
 
-	for (var j = 0; j < p.length; j++) {
-		const num = (Math.random() );
-		if (num <1) {
-			p[j].style.display = 'none';
-			origine = p[j].innerHTML;
-			var x1 = document.createElement('INPUT');
-			x1.setAttribute('type', 'text');
-			x1.setAttribute('maxlength', 1);
-			x1.setAttribute('onkeypress', 'validate(event)');
+// Check the input value
 
-			onkeypress = 'validate(event)';
-			x1.classList.add(origine);
-			p[j].parentNode.insertBefore(x1, p[j]);
-		}
-	}
-}
-
-
+function load(){
+	const allInput = document.querySelectorAll('INPUT');
+	allInput.forEach((e, i) => {
+		e.oninput = event => {
+			if (event.target.value === e.className) {
+				e.style.color = 'forestgreen';
+			} else {
+				e.style.color = 'firebrick';
+			}
+	
+			const result = function check() {
+				var inputArray = Array.prototype.slice.call(allInput);
+				const checkAll = inputArray.filter(item => {
+					return item.style.color === 'forestgreen';
+				});
+				if (checkAll.length === inputArray.length) {
+					return true;
+				} else {
+					return false;
+				}
+			}
+			if (result) {
+				document.getElementById('title').innerHTML = 'Chúc mừng, bạn đã chiến thắng !!';
+				stop();
+			}
+		};
+	});
+	
+};
 
 // Btn easy
 document.getElementById('easy').addEventListener('click', () => {
 	document.getElementById('container').style.display = 'block';
 	hide_easy();
+	//check();
+	load();
+	
 	document.getElementById('difficulty').style.display = 'none';
 	document.getElementById('control').style.display = 'block';
 	start();
@@ -130,16 +142,24 @@ document.getElementById('easy').addEventListener('click', () => {
 document.getElementById('medium').addEventListener('click', () => {
 	document.getElementById('container').style.display = 'block';
 	hide_medium();
+	load();
 	document.getElementById('difficulty').style.display = 'none';
 	document.getElementById('control').style.display = 'block';
+	start();
+	document.getElementById('time').innerText="Dừng";
+	return;
 });
 
 // Btn difficult
 document.getElementById('difficult').addEventListener('click', () => {
 	document.getElementById('container').style.display = 'block';
 	hide_difficult();
+	load();
 	document.getElementById('difficulty').style.display = 'none';
 	document.getElementById('control').style.display = 'block';
+	start();
+	document.getElementById('time').innerText="Dừng";
+	return;
 });
 
 // Btn pause
@@ -216,35 +236,8 @@ function validate(evt) {
 }
 
 
-// Check the input value
-const allInput = document.querySelectorAll('INPUT');
 
-allInput.forEach((e, i) => {
-	e.oninput = event => {
-		if (event.target.value === e.className) {
-			e.style.color = 'forestgreen';
-		} else {
-			e.style.color = 'firebrick';
-		}
 
-		const result = check();
-		if (result) {
-			document.getElementById('title').innerHTML = 'Bravo !';
-		}
-	};
-});
-
-function check() {
-	var inputArray = Array.prototype.slice.call(allInput);
-	const checkAll = inputArray.filter(item => {
-		return item.style.color === 'forestgreen';
-	});
-	if (checkAll.length === inputArray.length) {
-		return true;
-	} else {
-		return false;
-	}
-}
 
 // Restart
 document.getElementById('restart').addEventListener('click', () => {
