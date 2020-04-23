@@ -37,7 +37,7 @@ function hide_easy() {
 
 	for (var j = 0; j < p.length; j++) {
 		const num = (Math.random() );
-		if (num <0.1) {
+		if (num <0.4) {
 			p[j].style.display = 'none';
 			origine = p[j].innerHTML;
 			var x1 = document.createElement('INPUT');
@@ -92,6 +92,26 @@ function hide_difficult() {
 	}
 }
 
+
+// Input validation
+function validate(evt) {
+	var theEvent = evt || window.event;
+
+	// Handle paste
+	if (theEvent.type === 'paste') {
+		key = event.clipboardData.getData('text/plain');
+	} else {
+		// Handle key press
+		var key = theEvent.keyCode || theEvent.which;
+		key = String.fromCharCode(key);
+	}
+	var regex = /[1-9]|\./;
+	if (!regex.test(key)) {
+		theEvent.returnValue = false;
+		if (theEvent.preventDefault) theEvent.preventDefault();
+	}
+}
+
 // Check the input value
 
 function load(){
@@ -116,7 +136,7 @@ function load(){
 				e.style.color = 'firebrick';
 			}
 			const result = check();
-			
+
 			if (result) {
 				document.getElementById('title').innerHTML = 'Chúc mừng, bạn đã chiến thắng !!';
 				stop();
@@ -128,61 +148,90 @@ function load(){
 
 // Btn easy
 document.getElementById('easy').addEventListener('click', () => {
-	document.getElementById('container').style.display = 'block';
+	document.getElementById('contain').style.display = 'block';
 	hide_easy();
-	//check();
 	load();
-	
+	document.getElementById('tittle-level').style.display = 'none';
+	document.getElementById('pause').style.display = 'block';
 	document.getElementById('difficulty').style.display = 'none';
 	document.getElementById('control').style.display = 'block';
+	document.getElementById('banner').style.display = 'none';
 	start();
-	document.getElementById('time').innerText="Dừng";
 	return;
 });
 
 // Btn medium
 document.getElementById('medium').addEventListener('click', () => {
-	document.getElementById('container').style.display = 'block';
+	document.getElementById('contain').style.display = 'block';
 	hide_medium();
 	load();
+	document.getElementById('tittle-level').style.display = 'none';
+	document.getElementById('pause').style.display = 'block';
 	document.getElementById('difficulty').style.display = 'none';
 	document.getElementById('control').style.display = 'block';
+	document.getElementById('banner').style.display = 'none';
 	start();
-	document.getElementById('time').innerText="Dừng";
 	return;
 });
 
 // Btn difficult
 document.getElementById('difficult').addEventListener('click', () => {
-	document.getElementById('container').style.display = 'block';
+	document.getElementById('contain').style.display = 'block';
 	hide_difficult();
 	load();
+	document.getElementById('tittle-level').style.display = 'none';
+	document.getElementById('pause').style.display = 'block';
 	document.getElementById('difficulty').style.display = 'none';
 	document.getElementById('control').style.display = 'block';
+	document.getElementById('banner').style.display = 'none';
 	start();
-	document.getElementById('time').innerText="Dừng";
 	return;
 });
 
-// Btn pause
-document.getElementById('pause').addEventListener('click', () => {
-	if(document.getElementById('container').style.display === 'block'){
-		document.getElementById('container').style.display = 'none';
-		document.getElementById('pause').innerHTML = 'Tiếp tục';
-
+// Btn pause + cous
+document.getElementById('pauses').addEventListener('click', () => {
+	if(document.getElementById('icon-play').className === "icon-play"){
 		stop();
-		//document.getElementById('time').innerText="Chơi";
+		// document.getElementById('icon-play').style.display === 'block';
+		// document.getElementById('icon-pause').style.display === 'none';
+		
+		// document.getElementById('hide-board').style.display='block';
+		return;
+	}
+	// else{
+	// 	start();
+	// 	document.getElementById('icon-play').style.display === 'none';
+	// 	document.getElementById('icon-pause').style.display === 'block';
+	// 	document.getElementById('hide-board').style.display='none';
+	// 	return;
+	// }
+});
+
+//Btn icon-cous
+document.getElementById('i-cous').addEventListener('click', ()=>{
+	document.getElementById('pause').innerHTML = 'Tạm dừng';
+		document.getElementById('hide-board').style.display='none';
+		start();
+		return;
+})
+
+//Btn Tam dung
+document.getElementById('pauses').addEventListener('click', ()=>{
+	if(document.getElementById('pauses').style.display==='block'){
+		document.getElementById('pauses').innerHTML="Tiếp tục";
+		stop();
+		
+		//document.getElementById('hide-board').style.display='block';
+		
 		return;
 	}
 	else{
-		document.getElementById('container').style.display = 'block';
-		document.getElementById('pause').innerHTML = 'Tạm dừng';
-
+		document.getElementById('hide-board').style.display='none';
+		document.getElementById('pauses').innerHTML==="Tạm dừng"
 		start();
-		//document.getElementById('time').innerText="Dừng";
 		return;
 	}
-});
+})
 
 // Btn timer
 var msec=0;
@@ -191,7 +240,8 @@ var min=0;
 var hour=0;
 function start()
 {
-    document.forms[0].displayTimer.value=hour+":"+min+":"+sec;
+	//document.forms[0].displayTimer.innerHTML=hour+":"+min+":"+sec;
+	document.getElementById("ti").innerHTML=hour+":"+min+":"+sec;
     go=setTimeout("start()",1);
     msec++;
     if(msec==200)
@@ -207,7 +257,43 @@ function start()
     if(min==60){
         min=0;
         hour++;
-    }
+	}
+	if(sec<10){
+		if(min<10){
+			if(hour<10){
+				document.getElementById("ti").innerHTML="0"+hour+":0"+min+":0"+sec;
+			}
+			else{
+				document.getElementById("ti").innerHTML=hour+":0"+min+":0"+sec;
+			}
+		}
+		// else{
+		// 	if(hour<10){
+		// 		document.getElementById("ti").innerHTML="0"+hour+":"+min+":0"+sec;
+		// 	}
+		// 	else{
+		// 		document.getElementById("ti").innerHTML=hour+":"+min+":0"+sec;
+		// 	}
+		// }
+	}
+	else{
+		if(min<10){
+			if(hour<10){
+				document.getElementById("ti").innerHTML="0"+hour+":0"+min+":"+sec;
+			}
+			else{
+				document.getElementById("ti").innerHTML=hour+":0"+min+":"+sec;
+			}
+		}
+		// else{
+		// 	if(hour<10){
+		// 		document.getElementById("ti").innerHTML="0"+hour+":"+min+":"+sec;
+		// 	}
+		// 	else{
+		// 		document.getElementById("ti").innerHTML=hour+":"+min+":"+sec;
+		// 	}
+		// }
+	}
 }
 function stop()
 {
@@ -217,27 +303,6 @@ function reset()
 {
     window.location.reload()
 }
-
-// Input validation
-function validate(evt) {
-	var theEvent = evt || window.event;
-
-	// Handle paste
-	if (theEvent.type === 'paste') {
-		key = event.clipboardData.getData('text/plain');
-	} else {
-		// Handle key press
-		var key = theEvent.keyCode || theEvent.which;
-		key = String.fromCharCode(key);
-	}
-	var regex = /[1-9]|\./;
-	if (!regex.test(key)) {
-		theEvent.returnValue = false;
-		if (theEvent.preventDefault) theEvent.preventDefault();
-	}
-}
-
-
 
 
 
