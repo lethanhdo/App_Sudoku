@@ -92,129 +92,6 @@ function hide_difficult() {
 	}
 }
 
-// Check the input value
-
-function load(){
-	const allInput = document.querySelectorAll('INPUT');
-	allInput.forEach((e, i) => {
-		e.oninput = event => {
-			if (event.target.value === e.className) {
-				e.style.color = 'forestgreen';
-			} else {
-				e.style.color = 'firebrick';
-			}
-	
-			const result = function check() {
-				var inputArray = Array.prototype.slice.call(allInput);
-				const checkAll = inputArray.filter(item => {
-					return item.style.color === 'forestgreen';
-				});
-				if (checkAll.length === inputArray.length) {
-					return true;
-				} else {
-					return false;
-				}
-			}
-			if (result) {
-				document.getElementById('title').innerHTML = 'Chúc mừng, bạn đã chiến thắng !!';
-				stop();
-			}
-		};
-	});
-	
-};
-
-// Btn easy
-document.getElementById('easy').addEventListener('click', () => {
-	document.getElementById('container').style.display = 'block';
-	hide_easy();
-	//check();
-	load();
-	
-	document.getElementById('difficulty').style.display = 'none';
-	document.getElementById('control').style.display = 'block';
-	start();
-	document.getElementById('time').innerText="Dừng";
-	return;
-});
-
-// Btn medium
-document.getElementById('medium').addEventListener('click', () => {
-	document.getElementById('container').style.display = 'block';
-	hide_medium();
-	load();
-	document.getElementById('difficulty').style.display = 'none';
-	document.getElementById('control').style.display = 'block';
-	start();
-	document.getElementById('time').innerText="Dừng";
-	return;
-});
-
-// Btn difficult
-document.getElementById('difficult').addEventListener('click', () => {
-	document.getElementById('container').style.display = 'block';
-	hide_difficult();
-	load();
-	document.getElementById('difficulty').style.display = 'none';
-	document.getElementById('control').style.display = 'block';
-	start();
-	document.getElementById('time').innerText="Dừng";
-	return;
-});
-
-// Btn pause
-document.getElementById('pause').addEventListener('click', () => {
-	if(document.getElementById('container').style.display === 'block'){
-		document.getElementById('container').style.display = 'none';
-		document.getElementById('pause').innerHTML = 'Tiếp tục';
-
-		stop();
-		//document.getElementById('time').innerText="Chơi";
-		return;
-	}
-	else{
-		document.getElementById('container').style.display = 'block';
-		document.getElementById('pause').innerHTML = 'Tạm dừng';
-
-		start();
-		//document.getElementById('time').innerText="Dừng";
-		return;
-	}
-});
-
-// Btn timer
-var msec=0;
-var sec=0;
-var min=0;
-var hour=0;
-function start()
-{
-    document.forms[0].displayTimer.value=hour+":"+min+":"+sec;
-    go=setTimeout("start()",1);
-    msec++;
-    if(msec==200)
-    {
-        msec=0;
-        sec++;
-    }
-    if(sec==60)
-    {
-        sec=0;
-        min++;
-    }
-    if(min==60){
-        min=0;
-        hour++;
-    }
-}
-function stop()
-{
-    clearTimeout(go)
-}
-function reset()
-{
-    window.location.reload()
-}
 
 // Input validation
 function validate(evt) {
@@ -235,7 +112,197 @@ function validate(evt) {
 	}
 }
 
+// Check the input value
 
+function load(){
+	function check() {
+		var inputArray = Array.prototype.slice.call(allInput);
+		const checkAll = inputArray.filter(item => {
+			return item.style.color === 'forestgreen';
+		});
+		if (checkAll.length === inputArray.length) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	const allInput = document.querySelectorAll('INPUT');
+	allInput.forEach((e, i) => {
+		e.oninput = event => {
+			if (event.target.value === e.className) {
+				e.style.color = 'forestgreen';
+			} else {
+				e.style.color = 'firebrick';
+			}
+			const result = check();
+
+			if (result) {
+				document.getElementById('title').innerHTML = 'Chúc mừng, bạn đã chiến thắng !!';
+				stop();
+			}
+		};
+	});
+	
+};
+
+// Btn easy
+document.getElementById('easy').addEventListener('click', () => {
+	document.getElementById('contain').style.display = 'block';
+	hide_easy();
+	load();
+	document.getElementById('tittle-level').style.display = 'none';
+	document.getElementById('pause').style.display = 'block';
+	document.getElementById('difficulty').style.display = 'none';
+	document.getElementById('control').style.display = 'block';
+	document.getElementById('banner').style.display = 'none';
+	start();
+	return;
+});
+
+// Btn medium
+document.getElementById('medium').addEventListener('click', () => {
+	document.getElementById('contain').style.display = 'block';
+	hide_medium();
+	load();
+	document.getElementById('tittle-level').style.display = 'none';
+	document.getElementById('pause').style.display = 'block';
+	document.getElementById('difficulty').style.display = 'none';
+	document.getElementById('control').style.display = 'block';
+	document.getElementById('banner').style.display = 'none';
+	start();
+	return;
+});
+
+// Btn difficult
+document.getElementById('difficult').addEventListener('click', () => {
+	document.getElementById('contain').style.display = 'block';
+	hide_difficult();
+	load();
+	document.getElementById('tittle-level').style.display = 'none';
+	document.getElementById('pause').style.display = 'block';
+	document.getElementById('difficulty').style.display = 'none';
+	document.getElementById('control').style.display = 'block';
+	document.getElementById('banner').style.display = 'none';
+	start();
+	return;
+});
+
+// Btn pause + cous
+document.getElementById('pauses').addEventListener('click', () => {
+	if(document.getElementById('icon-play').className === "icon-play"){
+		stop();
+		// document.getElementById('icon-play').style.display === 'block';
+		// document.getElementById('icon-pause').style.display === 'none';
+		
+		// document.getElementById('hide-board').style.display='block';
+		return;
+	}
+	// else{
+	// 	start();
+	// 	document.getElementById('icon-play').style.display === 'none';
+	// 	document.getElementById('icon-pause').style.display === 'block';
+	// 	document.getElementById('hide-board').style.display='none';
+	// 	return;
+	// }
+});
+
+//Btn icon-cous
+document.getElementById('i-cous').addEventListener('click', ()=>{
+	document.getElementById('pause').innerHTML = 'Tạm dừng';
+		document.getElementById('hide-board').style.display='none';
+		start();
+		return;
+})
+
+//Btn Tam dung
+document.getElementById('pauses').addEventListener('click', ()=>{
+	if(document.getElementById('pauses').style.display==='block'){
+		document.getElementById('pauses').innerHTML="Tiếp tục";
+		stop();
+		
+		//document.getElementById('hide-board').style.display='block';
+		
+		return;
+	}
+	else{
+		document.getElementById('hide-board').style.display='none';
+		document.getElementById('pauses').innerHTML==="Tạm dừng"
+		start();
+		return;
+	}
+})
+
+// Btn timer
+var msec=0;
+var sec=0;
+var min=0;
+var hour=0;
+function start()
+{
+	//document.forms[0].displayTimer.innerHTML=hour+":"+min+":"+sec;
+	document.getElementById("ti").innerHTML=hour+":"+min+":"+sec;
+    go=setTimeout("start()",1);
+    msec++;
+    if(msec==200)
+    {
+        msec=0;
+        sec++;
+    }
+    if(sec==60)
+    {
+        sec=0;
+        min++;
+    }
+    if(min==60){
+        min=0;
+        hour++;
+	}
+	if(sec<10){
+		if(min<10){
+			if(hour<10){
+				document.getElementById("ti").innerHTML="0"+hour+":0"+min+":0"+sec;
+			}
+			else{
+				document.getElementById("ti").innerHTML=hour+":0"+min+":0"+sec;
+			}
+		}
+		// else{
+		// 	if(hour<10){
+		// 		document.getElementById("ti").innerHTML="0"+hour+":"+min+":0"+sec;
+		// 	}
+		// 	else{
+		// 		document.getElementById("ti").innerHTML=hour+":"+min+":0"+sec;
+		// 	}
+		// }
+	}
+	else{
+		if(min<10){
+			if(hour<10){
+				document.getElementById("ti").innerHTML="0"+hour+":0"+min+":"+sec;
+			}
+			else{
+				document.getElementById("ti").innerHTML=hour+":0"+min+":"+sec;
+			}
+		}
+		// else{
+		// 	if(hour<10){
+		// 		document.getElementById("ti").innerHTML="0"+hour+":"+min+":"+sec;
+		// 	}
+		// 	else{
+		// 		document.getElementById("ti").innerHTML=hour+":"+min+":"+sec;
+		// 	}
+		// }
+	}
+}
+function stop()
+{
+    clearTimeout(go)
+}
+function reset()
+{
+    window.location.reload()
+}
 
 
 
