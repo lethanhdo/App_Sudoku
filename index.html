@@ -1,29 +1,43 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-		<link rel="stylesheet" type="text/css" href="css/style.css" />
-		<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-		integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-		<!-- Bootstrap CSS -->
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-		<title>Sudoku</title>
-	</head>
-	<body>
-		<a href="t.html">tttttttttttttttttttttttttttttttttttttttttttt</a>
-		<div class="container">
-			<h1 id="title">Sudoku</h1>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+		integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+</head>
+  <body>
+    <div class="container-fluid">
+        <h1 id="title">Sudoku</h1>
 			<form>
-			<div id="ti" class="inputTimer" type="text" name="displayTimer"size="22"value="Chọn cấp độ">Chọn mức</div>
+            <div id="tittle-level" class="Timer" type="text" name="displayTimer"size="22"value="Chọn cấp độ">Chọn mức</div>
+            <div id="pause" class="pause">
+                <div class="pause-content">
+                    <div id="btn-pause" class="pause-icon">
+                        <button id="pauses" type="button">
+                            <i id="icon-pause" class="icon-pause fas fa-pause-circle"></i>
+                            <i id="icon-play" class="icon-play fas fa-play-circle"></i>  
+                        </button>
+                    </div>
+                    <div class="pause-time">
+                        <div id="ti" class="Timer" ></div>
+                    </div>
+                </div>
+            </div>
 			</form>
 	
 			<div id="control" class="control">
 				<button id="restart" type="button">Ván mới</button>
 				<!-- <button id="check" type="button">Kiểm tra</button> -->
-				<button id="pause" type="button">Tạm dừng</button>
+				<button id="pauses" type="button">Tạm dừng</button>
 			</div>
 			
 			<div id="difficulty" class="difficulty">
@@ -33,28 +47,44 @@
 			</div>
 			<div id="banner" class="banner">
 				<img src="img/logo.png" alt="">
-			</div>
-			<div id= "contain" class="contain">
+            </div>
+            
+            <div id= "contain" class="contain">
 				<div class="row">
 					<div class="col-3 left">
 						<div class="content">
 							<div class="app">
 								<div class="game">
-									<img src="img/logo.png" alt="">
-									<div class="des">
-										<h1>Sudoku</h1>
-										<p>bởi Thành Đô</p>
-										<div class="stars">
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-											<i class="fas fa-star"></i>
-										</div>
-									</div>
+                                    <div class="row">
+                                        <div class="col-4 img">
+                                            <img src="img/logo.png" alt="">
+                                        </div>
+                                        <div class="col-8 des">
+                                            <div class="des-content">
+                                                <span class="name-game">Sudoku</span>
+                                                <span class="name-author">bởi Thành Đô</span>
+                                                <div class="stars">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+									
 								</div>
 								<div class="download">
-	
+                                    <div class="row">
+                                        <div class="col-6 img-app img-chplay">
+                                            <img src="img/chplay.png" alt="">
+                                        </div>
+                                        <div class="col-6 img-app img-appstore">
+                                            <img src="img/appstore.png" alt="">
+                                        </div>
+                                    </div>
+                                   
 								</div>
 							</div>
 						</div>
@@ -171,17 +201,17 @@
 					</div>
 					<div class="col-3 right">
 						<div class="number">
-							<div class="line-right">
+							<div class="line-right line-right-1">
 								<div class="num num-1">1</div>
 								<div class="num num-2">2</div>
 								<div class="num num-3">3</div>
 							</div>
-							<div class="line-right">
+							<div class="line-right line-right-2">
 								<div class="num num-4">4</div>
 								<div class="num num-5">5</div>
 								<div class="num num-6">6</div>
 							</div>
-							<div class="line-right">
+							<div class="line-right line-right-3">
 								<div class="num num-7">7</div>
 								<div class="num num-8">8</div>
 								<div class="num num-9">9</div>
@@ -195,13 +225,13 @@
 				
 						
 			</div>
-		</div>
-		
-		<script type="text/javascript" src="js/style.js"></script>
-		 <!-- Optional JavaScript -->
+    </div>  
+
+    <script src="js/style.js"></script>
+    <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-	</body>
+  </body>
 </html>
