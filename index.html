@@ -1,11 +1,12 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Title</title>
+    <title>Sudoku</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+	<link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- CSS -->
@@ -13,47 +14,19 @@
     <!-- Fontawesome -->
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
 		integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-</head>
+	<!-- Slick -->
+    <link rel="stylesheet" type="text/css" href="slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="slick/slick-theme.css" />
+	</head>
   <body>
     <div class="container-fluid">
-        <h1 id="title">Sudoku</h1>
-			<form>
-            <div id="tittle-level" class="Timer" type="text" name="displayTimer"size="22"value="Chọn cấp độ">Chọn mức</div>
-            <div id="pause" class="pause">
-                <div class="pause-content">
-                    <div id="btn-pause" class="pause-icon">
-                        <button id="pauses" type="button">
-                            <i id="icon-pause" class="icon-pause fas fa-pause-circle"></i>
-                            <i id="icon-play" class="icon-play fas fa-play-circle"></i>  
-                        </button>
-                    </div>
-                    <div class="pause-time">
-                        <div id="ti" class="Timer" ></div>
-                    </div>
-                </div>
-            </div>
-			</form>
-	
-			<div id="control" class="control">
-				<button id="restart" type="button">Ván mới</button>
-				<!-- <button id="check" type="button">Kiểm tra</button> -->
-				<button id="pauses" type="button">Tạm dừng</button>
-			</div>
-			
-			<div id="difficulty" class="difficulty">
-				<button id="easy" type="button">Dễ</button>
-				<button id="medium" type="button">Thường</button>
-				<button id="difficult" type="button">Khó</button>
-			</div>
-			<div id="banner" class="banner">
-				<img src="img/logo.png" alt="">
-            </div>
-            
+		<h1 id="tittle">Sudoku</h1>
+		<div class="main">
             <div id= "contain" class="contain">
 				<div class="row">
-					<div class="col-3 left">
+					<div class="col-2- left">
 						<div class="content">
-							<div class="app">
+							<!-- <div class="app">
 								<div class="game">
                                     <div class="row">
                                         <div class="col-4 img">
@@ -86,147 +59,306 @@
                                     </div>
                                    
 								</div>
+							</div> -->
+							
+							<div id='slider-content-left' class="slider-content">
+								<div class="slider-item"><img src="img/qc0.jpg" alt=""></div>
+								<div class="slider-item"><img src="img/qc1.jpg" alt=""></div>
+								<div class="slider-item"><img src="img/qc0.jpg" alt=""></div>
+							</div>
+							<div id="close-ad-left" class=" close-ad close-ad-left">
+								<i class="fas fa-window-close"></i>
+							</div>
+							<div id="open-ad-left" class=" open-ad open-ad-left">
+								<i class="fas fa-caret-square-left"></i>
 							</div>
 						</div>
 					</div>
-					<div class="col-6 middle">
-						<div class="board">
-							<div class="line">
-								<div><p class="9"></p></div>
-								<div><p class="6"></p></div>
-								<div><p class="3"></p></div>
-								<div><p class="7"></p></div>
-								<div><p class="5"></p></div>
-								<div><p class="1"></p></div>
-								<div><p class="2"></p></div>
-								<div><p class="4"></p></div>
-								<div><p class="8"></p></div>
-							</div>
-							<div class="line">
-								<div><p class="1"></p></div>
-								<div><p class="4"></p></div>
-								<div><p class="5"></p></div>
-								<div><p class="8"></p></div>
-								<div><p class="9"></p></div>
-								<div><p class="2"></p></div>
-								<div><p class="7"></p></div>
-								<div><p class="6"></p></div>
-								<div><p class="3"></p></div>
-							</div>
-							<div class="line">
-								<div><p class="8"></p></div>
-								<div><p class="7"></p></div>
-								<div><p class="2"></p></div>
-								<div><p class="3"></p></div>
-								<div><p class="4"></p></div>
-								<div><p class="6"></p></div>
-								<div><p class="9"></p></div>
-								<div><p class="1"></p></div>
-								<div><p class="5"></p></div>
-							</div>
-							<div class="line">
-								<div><p class="3"></p></div>
-								<div><p class="1"></p></div>
-								<div><p class="9"></p></div>
-								<div><p class="5"></p></div>
-								<div><p class="2"></p></div>
-								<div><p class="4"></p></div>
-								<div><p class="6"></p></div>
-								<div><p class="8"></p></div>
-								<div><p class="7"></p></div>
-							</div>
-							<div class="line">
-								<div><p class="5"></p></div>
-								<div><p class="8"></p></div>
-								<div><p class="4"></p></div>
-								<div><p class="6"></p></div>
-								<div><p class="3"></p></div>
-								<div><p class="7"></p></div>
-								<div><p class="1"></p></div>
-								<div><p class="9"></p></div>
-								<div><p class="2"></p></div>
-							</div>
-							<div class="line">
-								<div><p class="7"></p></div>
-								<div><p class="2"></p></div>
-								<div><p class="6"></p></div>
-								<div><p class="1"></p></div>
-								<div><p class="8"></p></div>
-								<div><p class="9"></p></div>
-								<div><p class="5"></p></div>
-								<div><p class="3"></p></div>
-								<div><p class="4"></p></div>
-							</div>
-							<div class="line">
-								<div><p class="2"></p></div>
-								<div><p class="3"></p></div>
-								<div><p class="7"></p></div>
-								<div><p class="9"></p></div>
-								<div><p class="1"></p></div>
-								<div><p class="8"></p></div>
-								<div><p class="4"></p></div>
-								<div><p class="5"></p></div>
-								<div><p class="6"></p></div>
-							</div>
-							<div class="line">
-								<div><p class="4"></p></div>
-								<div><p class="5"></p></div>
-								<div><p class="1"></p></div>
-								<div><p class="2"></p></div>
-								<div><p class="6"></p></div>
-								<div><p class="3"></p></div>
-								<div><p class="8"></p></div>
-								<div><p class="7"></p></div>
-								<div><p class="9"></p></div>
-							</div>
-							<div class="line">
-								<div><p class="6"></p></div>
-								<div><p class="9"></p></div>
-								<div><p class="8"></p></div>
-								<div><p class="4"></p></div>
-								<div><p class="7"></p></div>
-								<div><p class="5"></p></div>
-								<div><p class="3"></p></div>
-								<div><p class="2"></p></div>
-								<div><p class="1"></p></div>
-							</div>
-							<div id="hide-board" class="hide-board">
-								<div class="cous">
-									<div class="icon">
-										<i id="i-cous" class="fas fa-play-circle"></i>
+					<div class="col-8- middle">
+						<!-- <div class="background"> -->
+							<form>
+								<div id="tittle-level" class="Timer" type="text" name="displayTimer"size="22"value="Chọn cấp độ"></div>
+								<div id="pause" class="pause">
+									<div class="pause-content">
+										<div class="level">
+											<i class="far fa-tachometer-slow"></i>
+											<span id="diff"></span></div>
+										<div class="time-icon">
+											<i class="far fa-clock"></i>
+										</div>
+										<div class="pause-time">
+											<div id="ti" class="Timer" ></div>
+										</div>
 									</div>
 								</div>
-							</div>	
-						</div>
-					</div>
-					<div class="col-3 right">
-						<div class="number">
-							<div class="line-right line-right-1">
-								<div class="num num-1">1</div>
-								<div class="num num-2">2</div>
-								<div class="num num-3">3</div>
-							</div>
-							<div class="line-right line-right-2">
-								<div class="num num-4">4</div>
-								<div class="num num-5">5</div>
-								<div class="num num-6">6</div>
-							</div>
-							<div class="line-right line-right-3">
-								<div class="num num-7">7</div>
-								<div class="num num-8">8</div>
-								<div class="num num-9">9</div>
+							</form>
+							<div id="control" class="control">
+								<button id="restart" type="button">Ván mới</button>
+								<button id="btn-pause" type="button">Tạm dừng</button>
+								<!-- <button id="btn-check" type="button">Kiểm tra</button> -->
 							</div>
 							
-						
+							<div id="difficulty" class="difficulty">
+								<button id="easy" type="button">Dễ</button>
+								<button id="medium" type="button">Thường</button>
+								<button id="difficult" type="button">Khó</button>
+							</div>
+							<div id="banner" class="banner">
+								<img src="img/logo.png" alt="">
+							</div>
+							<div id="ingame_hide" class="ingame_hide">
+								<div class="ingame">
+									<div class="number">
+										<div id="num1" class="num num-1" onclick="num1">1</div>
+										<div id="num2" class="num num-2" onclick="num2">2</div>
+										<div id="num3" class="num num-3" onclick="num3">3</div>
+										<div id="num4" class="num num-4" onclick="num4">4</div>
+										<div id="num5" class="num num-4" onclick="num5">5</div>
+									</div>
+									<div class="board">
+										<div class="line">
+											<div><p class="9"></p></div>
+											<div><p class="6"></p></div>
+											<div><p class="3"></p></div>
+											<div class="hr"></div>
+											<div><p class="7"></p></div>
+											<div><p class="5"></p></div>
+											<div><p class="1"></p></div>
+											<div class="hr"></div>
+											<div><p class="2"></p></div>
+											<div><p class="4"></p></div>
+											<div><p class="8"></p></div>
+										</div>
+										<div class="line">
+											<div><p class="1"></p></div>
+											<div><p class="4"></p></div>
+											<div><p class="5"></p></div>
+											<div class="hr"></div>
+											<div><p class="8"></p></div>
+											<div><p class="9"></p></div>
+											<div><p class="2"></p></div>
+											<div class="hr"></div>
+											<div><p class="7"></p></div>
+											<div><p class="6"></p></div>
+											<div><p class="3"></p></div>
+										</div>
+										<div class="line">
+											<div><p class="8"></p></div>
+											<div><p class="7"></p></div>
+											<div><p class="2"></p></div>
+											<div class="hr"></div>
+											<div><p class="3"></p></div>
+											<div><p class="4"></p></div>
+											<div><p class="6"></p></div>
+											<div class="hr"></div>
+											<div><p class="9"></p></div>
+											<div><p class="1"></p></div>
+											<div><p class="5"></p></div>
+										</div>
+										<div class="hr-v"></div>
+										<div class="line">
+											<div><p class="3"></p></div>
+											<div><p class="1"></p></div>
+											<div><p class="9"></p></div>
+											<div class="hr"></div>
+											<div><p class="5"></p></div>
+											<div><p class="2"></p></div>
+											<div><p class="4"></p></div>
+											<div class="hr"></div>
+											<div><p class="6"></p></div>
+											<div><p class="8"></p></div>
+											<div><p class="7"></p></div>
+										</div>
+										<div class="line">
+											<div><p class="5"></p></div>
+											<div><p class="8"></p></div>
+											<div><p class="4"></p></div>
+											<div class="hr"></div>
+											<div><p class="6"></p></div>
+											<div><p class="3"></p></div>
+											<div><p class="7"></p></div>
+											<div class="hr"></div>
+											<div><p class="1"></p></div>
+											<div><p class="9"></p></div>
+											<div><p class="2"></p></div>
+										</div>
+										<div class="line">
+											<div><p class="7"></p></div>
+											<div><p class="2"></p></div>
+											<div><p class="6"></p></div>
+											<div class="hr"></div>
+											<div><p class="1"></p></div>
+											<div><p class="8"></p></div>
+											<div><p class="9"></p></div>
+											<div class="hr"></div>
+											<div><p class="5"></p></div>
+											<div><p class="3"></p></div>
+											<div><p class="4"></p></div>
+										</div>
+										<div class="hr-v"></div>
+										<div class="line">
+											<div><p class="2"></p></div>
+											<div><p class="3"></p></div>
+											<div><p class="7"></p></div>
+											<div class="hr"></div>
+											<div><p class="9"></p></div>
+											<div><p class="1"></p></div>
+											<div><p class="8"></p></div>
+											<div class="hr"></div>
+											<div><p class="4"></p></div>
+											<div><p class="5"></p></div>
+											<div><p class="6"></p></div>
+										</div>
+										<div class="line">
+											<div><p class="4"></p></div>
+											<div><p class="5"></p></div>
+											<div><p class="1"></p></div>
+											<div class="hr"></div>
+											<div><p class="2"></p></div>
+											<div><p class="6"></p></div>
+											<div><p class="3"></p></div>
+											<div class="hr"></div>
+											<div><p class="8"></p></div>
+											<div><p class="7"></p></div>
+											<div><p class="9"></p></div>
+										</div>
+										<div class="line">
+											<div><p class="6"></p></div>
+											<div><p class="9"></p></div>
+											<div><p class="8"></p></div>
+											<div class="hr"></div>
+											<div><p class="4"></p></div>
+											<div><p class="7"></p></div>
+											<div><p class="5"></p></div>
+											<div class="hr"></div>
+											<div><p class="3"></p></div>
+											<div><p class="2"></p></div>
+											<div><p class="1"></p></div>
+										</div>
+										<div id="hide-board" class="hide-board">
+											<div class="cous">
+												<div class="icon">
+													<i id="i-cous" class="fas fa-play-circle"></i>
+												</div>
+											</div>
+										</div>	
+									</div>
+									<div class="number">
+										<div id="num6" class="num num-6" onclick="num6">6</div>
+										<div id="num7" class="num num-7" onclick="num7">7</div>
+										<div id="num8" class="num num-8" onclick="num8">8</div>
+										<div id="num9" class="num num-9" onclick="num9">9</div>
+										<div id="numEdit" class="num num-9" onclick="numEdit"><i class="fas fa-pencil-alt"></i></div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="sudoku sudoku-intro">
+								<div class="sudoku-tittle sudoku-intro-tittle">
+									<h1>Giới thiệu trò chơi Sudoku</h1>
+								</div>
+								<div class="sudoku-content sudoku-intro-content">
+									<span>Sudoku (数独すうどく (số độc) sūdoku?)
+										 (/[invalid input: 'Sudoku.ogg']suːˈdoʊkuː/, /-ˈdɒ-/, /sə-/, 
+										 ban đầu có tên gọi là Number Place)[1] là một trò chơi câu đố sắp xếp chữ số
+										  dựa trên logic[2][3] theo tổ hợp.[4] Mục tiêu của trò chơi là điền các 
+										  chữ số vào một lưới 9×9 sao cho mỗi cột, mỗi hàng, và mỗi phần trong số 
+										  chín lưới con 3×3 cấu tạo nên lưới chính 
+										  (cũng gọi là "hộp", "khối", hoặc "vùng") đều chứa tất cả các chữ số từ 1
+										   tới 9. 
+										   <br><br> Câu đố đã được hoàn thành một phần, người chơi phải giải tiếp bằng 
+										   việc điền số. Mỗi câu đố được thiết lập tốt có một cách làm duy nhất.
+	
+										Những bảng trò chơi đã được hoàn chỉnh luôn tạo thành một loại ma trận hình vuông Latinh với một điều kiện hạn chế được bổ sung về nội dung của từng khu vực lưới con. Ví dụ, mỗi số nguyên duy nhất sẽ có thể không xuất hiện hai lần trong cùng một hàng, cột hoặc bất kỳ một trong chín tiểu khu/lưới con 3×3 nào của bảng trò chơi 9x9.</span>
+								</div>
+							</div>
+	
+							<div class="sudoku sudoku-how">
+								<div class="sudoku-tittle sudoku-how-tittle">
+									<h1>Cách chơi Sudoku</h1>
+								</div>
+								<div class="sudoku-content  sudoku-how-content">
+									<span>Mục tiêu của Sudoku là điền vào lưới 9 × 9 với các chữ số sao 
+										cho mỗi cột, hàng và phần 3 × 3 chứa các số từ 1 đến 9. 
+										Khi bắt đầu trò chơi, lưới 9 × 9 sẽ có một số trong các ô
+										 vuông được điền vào. Công việc của bạn là sử dụng logic để điền
+										  vào các chữ số còn thiếu và hoàn thành lưới. Đừng quên, một động thái 
+										  là không chính xác nếu:
+										  <br><br>
+										<ul>
+											<li>Bất kỳ hàng nào chứa nhiều hơn một trong cùng một số từ 1 đến 9</li>
+											<li>Bất kỳ cột nào chứa nhiều hơn một trong cùng một số từ 1 đến 9</li>
+											<li>Bất kỳ lưới 3 × 3 nào cũng chứa nhiều hơn một số từ 1 đến 9</li>
+										</ul>
+									</span>
+								</div>
+							</div>
+							<div class="sudoku sudoku-tip">
+								<div class="sudoku-tittle sudoku-tip-tittle">
+									<h1>Mẹo chơi Sudoku</h1>
+								</div>
+								<div class="sudoku-content  sudoku-tip-content">
+									<span>Sudoku là một trò chơi giải đố thú vị khi bạn nắm bắt
+										 được nó. Đồng thời, học chơi Sudoku có thể hơi đáng sợ đối
+										  với người mới bắt đầu. Vì vậy, nếu bạn là người mới bắt đầu 
+										  hoàn chỉnh, đây là một vài mẹo Sudoku mà bạn có thể sử dụng để 
+										  cải thiện kỹ năng Sudoku của mình.
+										  <br><br>
+										<ul>
+											<li>Mẹo 1: Tìm các hàng, cột của các phần 3 × 3 có chứa 5 số trở lên. 
+												Làm việc thông qua các ô trống còn lại, thử các số chưa được sử dụng.
+												 Trong nhiều trường hợp, bạn sẽ tìm thấy các số chỉ có thể được đặt
+												  ở một vị trí xem xét các số khác đã có trong hàng, cột và lưới 
+												  3 × 3 của nó.</li>
+											<li>Mẹo 2: Chia lưới trực quan thành 3 cột và 3 hàng. Mỗi cột lớn sẽ
+												 có các lưới 3, 3 × 3 và mỗi hàng sẽ có các lưới 3, 3 × 3.
+												  Bây giờ, hãy tìm các cột hoặc lưới có 2 số giống nhau. 
+												  Theo logic, phải có một bản sao thứ 3 của cùng một số trong
+												   phần 9 ô còn lại. Nhìn vào mỗi vị trí trong số 9 vị trí còn lại
+													và xem liệu bạn có thể tìm thấy vị trí của số bị thiếu hay không.</li>
+										</ul>
+									</span>
+								</div>
+							</div>
+						<!-- </div> -->
+					</div>
+					<div class="col-2- right">
+						<div class="content">
+							<div id="slider-content-right" class="sider-content">
+								<div class="slider-item"><img src="img/qc1.jpg" alt=""></div>
+								<div class="slider-item"><img src="img/qc0.jpg" alt=""></div>
+								<div class="slider-item"><img src="img/qc1	.jpg" alt=""></div>
+							  </div>
+							  <div id="close-ad-right" class=" close-ad close-ad-right">
+								<i class="fas fa-window-close"></i>
+							</div>
+							<div id="open-ad-right" class=" open-ad open-ad-right">
+								<i class="fas fa-caret-square-left"></i>
+							</div>
 						</div>
 					</div>
-				</div>		
-				
-				
-						
-			</div>
+                </div>	
+            </div>			
+		</div>
+			
+		<div class="footer">
+			<div class="footer-copyright">Copyright Sudoku 2020</div>
+			<div class="footer-content">
+				<a href="#" class="footer-content-small">Trò chơi</a>
+				<a href="#"  class="footer-content-small">Quy Định</a>
+				<a  href="#" class="footer-content-small">Liên hệ</a>
+				<a href="#"  class="footer-content-small">Sơ đồ</a>
+				<a  href="#" class="footer-content-small">Thiệp việt</a>
+			</div>	
+		</div>
+			
+            
+        
     </div>  
-
+	 <!-- slick -->
+	 <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+	 <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	 <script type="text/javascript" src="slick/slick.min.js"></script>
     <script src="js/style.js"></script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
