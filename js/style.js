@@ -113,28 +113,15 @@ function validate(evt) {
 
 // Check the input value
 function load() {
-	function check() {
-		var inputArray = Array.prototype.slice.call(allInput);
-		const checkAll = inputArray.filter(item => {
-			return item.style.color === 'forestgreen';
-		});
-
-		if (checkAll.length === inputArray.length) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
 	const allInput = document.querySelectorAll('INPUT');
 	allInput.forEach((e, i) => {
 
 		e.onclick = function () {
+			allInput.forEach(item => item.removeAttribute('data-active'));
 			this.setAttribute('data-active', "true");
 		}
 
 		e.oninput = event => {
-
 			if (event.target.value === e.className) {
 				e.style.color = 'forestgreen';
 			} else {
@@ -150,17 +137,35 @@ function load() {
 	});
 };
 
+function check() {
+	const allInput = document.querySelectorAll('INPUT');
+	var inputArray = Array.prototype.slice.call(allInput);
+	const checkAll = inputArray.filter(item => {
+		return item.style.color === 'forestgreen';
+	});
+
+	if (checkAll.length === inputArray.length) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
 
 //input number click
-function inputNumClick(x){
+function inputNumClick(x) {
 	let input = document.querySelector('input[data-active]');
-	console.log(input);
 	let inputDataVal = input.getAttribute("data-active");
 	if (inputDataVal == 'true') {
 		input.value = x;
 		input.removeAttribute('data-active');
+		if (x == input.className) {
+			input.style.color = 'forestgreen';
+		} else {
+			input.style.color = 'firebrick';
+		}
 	}
-	load();
+	check();
 }
 document.getElementById('num1').addEventListener('click', () => {
 	inputNumClick(1);
@@ -345,48 +350,48 @@ document.getElementById('restart').addEventListener('click', () => {
 
 
 //slick
-$(function(){
-    $('.slider-content').slick({
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 2000,
-        prevArrow: ".prev-arrow",
-        nextArrow: ".next-arrow",
-        responsive: [
-            {
-            breakpoint: 600,
-            settings: {
-                slidesToShow: 1,
-                slidesToScroll: 1
-                }
-            }
-        ]     
-    });
+$(function () {
+	$('.slider-content').slick({
+		slidesToShow: 3,
+		slidesToScroll: 1,
+		autoplay: true,
+		autoplaySpeed: 2000,
+		prevArrow: ".prev-arrow",
+		nextArrow: ".next-arrow",
+		responsive: [
+			{
+				breakpoint: 600,
+				settings: {
+					slidesToShow: 1,
+					slidesToScroll: 1
+				}
+			}
+		]
+	});
 });
 
 //Close ad
-document.getElementById('close-ad-left').addEventListener('click',()=>{
-	document.getElementById('slider-content-left').style.display='none';
-	document.getElementById('close-ad-left').style.display='none';
-	document.getElementById('open-ad-left').style.display='block';
+document.getElementById('close-ad-left').addEventListener('click', () => {
+	document.getElementById('slider-content-left').style.display = 'none';
+	document.getElementById('close-ad-left').style.display = 'none';
+	document.getElementById('open-ad-left').style.display = 'block';
 
 });
-document.getElementById('open-ad-left').addEventListener('click',()=>{
-	document.getElementById('slider-content-left').style.display='block';
-	document.getElementById('close-ad-left').style.display='block';
-	document.getElementById('open-ad-left').style.display='none';
+document.getElementById('open-ad-left').addEventListener('click', () => {
+	document.getElementById('slider-content-left').style.display = 'block';
+	document.getElementById('close-ad-left').style.display = 'block';
+	document.getElementById('open-ad-left').style.display = 'none';
 
 });
-document.getElementById('close-ad-right').addEventListener('click',()=>{
-	document.getElementById('slider-content-right').style.display='none';
-	document.getElementById('close-ad-right').style.display='none';
-	document.getElementById('open-ad-right').style.display='block';
+document.getElementById('close-ad-right').addEventListener('click', () => {
+	document.getElementById('slider-content-right').style.display = 'none';
+	document.getElementById('close-ad-right').style.display = 'none';
+	document.getElementById('open-ad-right').style.display = 'block';
 
 });
-document.getElementById('open-ad-right').addEventListener('click',()=>{
-	document.getElementById('slider-content-right').style.display='block';
-	document.getElementById('close-ad-right').style.display='block';
-	document.getElementById('open-ad-right').style.display='none';
+document.getElementById('open-ad-right').addEventListener('click', () => {
+	document.getElementById('slider-content-right').style.display = 'block';
+	document.getElementById('close-ad-right').style.display = 'block';
+	document.getElementById('open-ad-right').style.display = 'none';
 
 });
