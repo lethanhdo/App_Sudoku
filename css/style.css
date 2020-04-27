@@ -63,6 +63,19 @@ body {
     margin: 0.5rem !important;
     border: 3px solid #54452b !important;
   }
+  .footer-content-small {
+    margin: 0.5rem !important;
+  }
+  .banner {
+    margin: 0rem !important;
+  }
+  .banner img {
+    width: 30% !important;
+  }
+  h1 {
+    margin: 5px !important;
+    font-size: 30px !important;
+  }
 }
 
 #tittle {
